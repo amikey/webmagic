@@ -5,17 +5,17 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class TextContainSelector extends AbstractedSelector {
+public class ContainSelector extends AbstractedSelector {
 
 	private String text;
 
-	public TextContainSelector(String text) {
+	public ContainSelector(String text) {
 		super();
 		this.text = text.toLowerCase();
 	}
 
-	public TextContainSelector(String text, String defaultValue) {
-		super(defaultValue);
+	public ContainSelector(String text, AbstractedSelector.Temp tmpObj) {
+		super(tmpObj);
 		this.text = text;
 	}
 
@@ -25,7 +25,7 @@ public class TextContainSelector extends AbstractedSelector {
 		if (_text.contains(this.text)) {
 			return this.text;
 		}
-		return StringUtils.isNotEmpty(this.defaultValue) ? this.defaultValue : null;
+		return handleNullVal();
 	}
 
 	@Override
