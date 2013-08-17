@@ -6,18 +6,17 @@ import java.lang.annotation.Target;
 
 /**
  * 定义类或者字段的抽取规则，只能在Extract、ExtractByRaw之后使用。<br>
+ * @see {@link ComboExtract}
  * @author code4crafter@gmail.com <br>
  * Date: 13-8-1 <br>
  * Time: 下午8:40 <br>
  */
+@Deprecated
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
 public @interface ExtractBy3 {
 
     String value();
-
-    public enum Type { XPath, Regex, Css}
-
-    Type type() default Type.XPath;
-
+    
+    ExprType type() default ExprType.XPATH;
 }

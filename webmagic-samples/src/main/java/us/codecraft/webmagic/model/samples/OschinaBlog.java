@@ -3,6 +3,7 @@ package us.codecraft.webmagic.model.samples;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.HasKey;
 import us.codecraft.webmagic.model.OOSpider;
+import us.codecraft.webmagic.model.annotation.ExprType;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
 import us.codecraft.webmagic.pipeline.JsonFilePageModelPipeline;
@@ -20,7 +21,7 @@ public class OschinaBlog implements HasKey{
     @ExtractBy("//title")
     private String title;
 
-    @ExtractBy(value = "div.BlogContent",type = ExtractBy.Type.Css)
+    @ExtractBy(value = "div.BlogContent",type = ExprType.CSS)
     private String content;
 
     @ExtractBy(value = "//div[@class='BlogTags']/a/text()", multi = true)

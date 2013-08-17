@@ -14,6 +14,8 @@ import java.util.List;
 public class PlainText implements Selectable {
 
     protected List<String> strings;
+    
+    protected boolean isOr = true;
 
     public PlainText(List<String> strings) {
         this.strings = strings;
@@ -86,7 +88,7 @@ public class PlainText implements Selectable {
         return strings;
     }
 
-    @Override
+	@Override
     public String toString() {
         if (CollectionUtils.isNotEmpty(all())) {
             return all().get(0);

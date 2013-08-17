@@ -46,4 +46,8 @@ class ModelPipeline implements Pipeline {
             }
         }
     }
+
+	public Map<Class, PageModelPipeline> getPageModelPipelines() {
+		return pageModelPipelines;
+	}
 }

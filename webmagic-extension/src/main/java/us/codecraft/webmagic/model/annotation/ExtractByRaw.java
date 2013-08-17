@@ -22,15 +22,13 @@ public @interface ExtractByRaw {
      */
     String value();
 
-    public enum Type {XPath, Regex, Css}
-
     /**
-     * 抽取规则类型，支持XPath、Css selector、正则表达式，默认是XPath
+     * 抽取规则类型，支持XPATH、CSS selector,MATCH(contain),REGEX 默认是XPath
      *
      * @return 抽取规则类型
      */
-    Type type() default Type.XPath;
-
+    ExprType type() default ExprType.XPATH;
+    
     /**
      * 是否是不能为空的关键字段，若notNull为true，则对应字段抽取不到时，丢弃整个类，默认为false
      *

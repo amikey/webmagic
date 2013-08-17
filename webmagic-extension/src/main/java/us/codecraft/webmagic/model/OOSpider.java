@@ -1,7 +1,17 @@
 package us.codecraft.webmagic.model;
 
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.model.annotation.TargetUrl;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
@@ -57,5 +67,43 @@ public class OOSpider extends Spider {
         }
         return this;
     }
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	protected boolean validate(String url) {
+		Map<Class, PageModelPipeline> map = this.modelPipeline.getPageModelPipelines();
+		Set<Class> classSet = map.keySet();
+		Iterator<Class> iter =  classSet.iterator();
+		if (iter.hasNext()) {
+			Class clazz = iter.next();
+			Annotation annotation = clazz.getAnnotation(TargetUrl.class);
+			List<Pattern> targetUrlPatterns = new ArrayList<Pattern>();
+			if (annotation == null) {
+				targetUrlPatterns.add(Pattern.compile(".*"));
+			} else {
+				TargetUrl targetUrl = (TargetUrl) annotation;
+				String[] value = targetUrl.value();
+				for (String s : value) {
+					targetUrlPatterns.add(Pattern.compile("(" + s.replace(".", "\\.").replace("*", "[^\"'#]*") + ")"));
+				}
+			}
+			boolean match = false;
+			
+			for(Pattern p : targetUrlPatterns) {
+				Matcher m = p.matcher(url);
+				if (m.find()) {
+					match = true;
+					break;
+				}
+			}
+			if (!match && !targetUrlPatterns.isEmpty()) {
+				logger.warn(String.format("the url(%s) don't match the targeUrl regex(%s)", url, targetUrlPatterns.get(0)));
+			}
+			return match;
+		}
+		return super.validate(url);
+	}
+    
+    
 
 }

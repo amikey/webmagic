@@ -1,6 +1,7 @@
 package us.codecraft.webmagic.model.samples;
 
 import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.model.annotation.ExprType;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
@@ -16,7 +17,7 @@ public class IteyeBlog implements Blog{
     @ExtractBy("//title")
     private String title;
 
-    @ExtractBy(value = "div#blog_content",type = ExtractBy.Type.Css)
+    @ExtractBy(value = "div#blog_content",type = ExprType.CSS)
     private String content;
 
     @Override

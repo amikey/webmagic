@@ -70,4 +70,5 @@ public interface Selectable {
      * @return multi string result
      */
     public List<String> all();
+
 }
