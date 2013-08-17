@@ -3,6 +3,7 @@ package us.codecraft.webmagic.model.samples;
 import us.codecraft.webmagic.PagedModel;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.*;
+import us.codecraft.webmagic.model.annotation.ExprType;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.ExtractBy2;
 import us.codecraft.webmagic.model.annotation.ExtractByUrl;
@@ -29,7 +30,7 @@ public class News163 implements PagedModel {
     private String page;
 
     @ExtractBy(value = "//div[@class=\"ep-pages\"]//a/@href", multi = true,notNull = false)
-    @ExtractBy2(value = "http://news\\.163\\.com/\\d+/\\d+/\\d+/\\w+_(\\d+)\\.html", type = ExtractBy2.Type.Regex)
+    @ExtractBy2(value = "http://news\\.163\\.com/\\d+/\\d+/\\d+/\\w+_(\\d+)\\.html", type = ExprType.REGEX)
     private List<String> otherPage;
 
     @ExtractBy("//h1[@id=\"h1title\"]/text()")

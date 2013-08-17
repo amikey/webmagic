@@ -12,7 +12,14 @@ import java.lang.annotation.Target;
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
 public @interface ComboExtract {
+	/**
+	 * operator of match logic.
+	 * <b>AND</b>
+	 * <b>OR</b>
+	 */
+	public enum OP {AND,OR};
+	
+	OP op() default OP.OR;
 
-
-
+	ExtractBy[] value();
 }

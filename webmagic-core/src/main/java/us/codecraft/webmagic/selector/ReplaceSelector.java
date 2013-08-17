@@ -20,6 +20,7 @@ public class ReplaceSelector implements Selector {
     private Pattern regex;
 
     public ReplaceSelector(String regexStr, String replacement) {
+    	super();
         this.regexStr = regexStr;
         this.replacement = replacement;
         try {

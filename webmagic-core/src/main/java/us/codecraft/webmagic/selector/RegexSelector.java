@@ -14,14 +14,24 @@ import java.util.regex.PatternSyntaxException;
  * Date: 13-4-21
  * Time: 上午7:09
  */
-public class RegexSelector implements Selector {
+public class RegexSelector extends AbstractedSelector {
 
     private String regexStr;
 
     private Pattern regex;
 
     public RegexSelector(String regexStr) {
-        if (StringUtils.isBlank(regexStr)){
+    	super();
+    	init(regexStr);
+    }
+    
+    public RegexSelector(String regexStr, String defaultValue) {
+		super(defaultValue);
+		init(regexStr);
+	}
+    
+    private void init(String regexStr) {
+    	if (StringUtils.isBlank(regexStr)){
             throw new IllegalArgumentException("regex must not be empty");
         }
         if (!StringUtils.contains(regexStr,"(")&&!StringUtils.contains(regexStr,")")){
@@ -38,7 +48,9 @@ public class RegexSelector implements Selector {
         }
     }
 
-    @Override
+
+
+	@Override
     public String select(String text) {
         return selectGroup(text).get(1);
     }
@@ -54,11 +66,13 @@ public class RegexSelector implements Selector {
     }
 
     public RegexResult selectGroup(String text) {
+    	//System.out.println(text);
         Matcher matcher = regex.matcher(text);
         if (matcher.find()) {
             String[] groups = new String[matcher.groupCount()+1];
             for (int i = 0; i < groups.length; i++) {
-                groups[i] = matcher.group(i);
+            	String val = matcher.group(i);
+                groups[i] = (StringUtils.isEmpty(val) && hasDefaultValue() ? this.defaultValue : val);
             }
             return new RegexResult(groups);
         }
@@ -71,7 +85,8 @@ public class RegexSelector implements Selector {
         while (matcher.find()) {
             String[] groups = new String[matcher.groupCount()+1];
             for (int i = 0; i < groups.length; i++) {
-                groups[i] = matcher.group(i);
+            	String val = matcher.group(i);
+                groups[i] = (StringUtils.isEmpty(val) && hasDefaultValue() ? this.defaultValue : val);
             }
             resultList.add(new RegexResult(groups));
         }
@@ -82,5 +97,9 @@ public class RegexSelector implements Selector {
     public String toString() {
         return regexStr;
     }
-
+    
+    
+    private boolean hasDefaultValue() {
+    	return StringUtils.isNotEmpty(this.defaultValue);
+    }
 }

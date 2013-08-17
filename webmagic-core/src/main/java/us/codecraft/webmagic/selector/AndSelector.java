@@ -21,9 +21,9 @@ public class AndSelector implements Selector {
     @Override
     public String select(String text) {
         for (Selector selector : selectors) {
-            if (text == null) {
-                return null;
-            }
+			if (text == null || "".equals(text.trim()) || "null".equalsIgnoreCase(text.trim())) {
+				return null;
+			}
             text = selector.select(text);
         }
         return text;

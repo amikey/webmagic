@@ -27,16 +27,16 @@ class ModelPageProcessor implements PageProcessor {
 
     private Set<Pattern> targetUrlPatterns = new HashSet<Pattern>();
 
-    public static ModelPageProcessor create(Site site, Class... clazzs) {
+    public static ModelPageProcessor create(Site site, Class<?>... clazzs) {
         ModelPageProcessor modelPageProcessor = new ModelPageProcessor(site);
-        for (Class clazz : clazzs) {
+        for (Class<?> clazz : clazzs) {
             modelPageProcessor.addPageModel(clazz);
         }
         return modelPageProcessor;
     }
 
 
-    public ModelPageProcessor addPageModel(Class clazz) {
+    public ModelPageProcessor addPageModel(Class<?> clazz) {
         PageModelExtractor pageModelExtractor = PageModelExtractor.create(clazz);
         targetUrlPatterns.addAll(pageModelExtractor.getTargetUrlPatterns());
         targetUrlPatterns.addAll(pageModelExtractor.getHelpUrlPatterns());
@@ -54,7 +54,7 @@ class ModelPageProcessor implements PageProcessor {
             extractLinks(page, pageModelExtractor.getHelpUrlRegionSelector(), pageModelExtractor.getHelpUrlPatterns());
             extractLinks(page, pageModelExtractor.getTargetUrlRegionSelector(), pageModelExtractor.getTargetUrlPatterns());
             Object process = pageModelExtractor.process(page);
-            if (process == null || (process instanceof List && ((List) process).size() == 0)) {
+            if (process == null || (process instanceof List && ((List<?>) process).size() == 0)) {
                 page.getResultItems().setSkip(true);
             }
             postProcessPageModel(pageModelExtractor.getClazz(), process);
@@ -79,7 +79,7 @@ class ModelPageProcessor implements PageProcessor {
         }
     }
 
-    protected void postProcessPageModel(Class clazz, Object object) {
+    protected void postProcessPageModel(Class<?> clazz, Object object) {
     }
 
     @Override
