@@ -16,7 +16,6 @@ public abstract class AbstractedSelector implements Selector {
 	public AbstractedSelector() {
 		super();
 		tmpObj = new Temp();
-		
 	}
 
 	protected String handleNullVal() {
