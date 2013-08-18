@@ -2,6 +2,7 @@ package us.codecraft.webmagic.model.samples;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import us.codecraft.webmagic.Page;
@@ -73,7 +74,11 @@ public class Walmart implements AfterExtractor {
 
 	@Override
 	public void afterProcess(Page page) {
-		// System.out.println("categroy:\t" + this.categroy + "\t");
+		Map<String, String> map = page.getResultItems().getAllHttpResponses();
+		Set<String> keys = map.keySet();
+		for (String key : keys) {
+			//System.out.println(key + ":" + map.get(key));
+		}
 	}
 
 	public static void main(String[] args) {
