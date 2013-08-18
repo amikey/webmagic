@@ -4,7 +4,6 @@ import java.util.Map;
 
 /**
  * @author code4crafter@gmail.com
- * Date Dec 14, 2012
  */
 public class DoubleKeyMap<K1, K2, V> extends MultiKeyMapBase {
     private Map<K1, Map<K2, V>> map;
@@ -93,7 +92,6 @@ public class DoubleKeyMap<K1, K2, V> extends MultiKeyMapBase {
             return null;
         }
         V remove = get(key1).remove(key2);
-        // 如果上一级map为空，把它也回收掉
         if (get(key1).size() == 0) {
             remove(key1);
         }

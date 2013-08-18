@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * All extractors will do extracting separately, <br>
+ * and the results of extractors will combined as the final result.
  * @author code4crafter@gmail.com <br>
- *         Date: 13-8-3 <br>
- *         Time: 下午5:29 <br>
+ * @since 0.2.0
  */
 public class OrSelector implements Selector {
 
@@ -28,6 +29,10 @@ public class OrSelector implements Selector {
 		}
 		return null;
 	}
+
+    public OrSelector(List<Selector> selectors) {
+        this.selectors = selectors;
+    }
 
 	@Override
 	public List<String> selectList(String text) {

@@ -2,14 +2,13 @@ package us.codecraft.webmagic.utils;
 
 /**
  * @author code4crafter@gmail.com
- * Date Dec 14, 2012
  */
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * multikey map, some basic objects *
+ * multi-key map, some basic objects *
  *
  * @author yihua.huang
  */

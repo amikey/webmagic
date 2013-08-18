@@ -9,10 +9,10 @@ import java.util.regex.PatternSyntaxException;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 正则表达式抽取器。<br>
- * 
+ * Selector in regex.<br>
+ *
  * @author code4crafter@gmail.com <br>
- *         Date: 13-4-21 Time: 上午7:09
+ * @since 0.1.0
  */
 public class RegexSelector extends AbstractedSelector {
 

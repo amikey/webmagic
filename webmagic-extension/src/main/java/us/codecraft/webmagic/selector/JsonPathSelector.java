@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * JsonPath selector.<br>
+ * Used to extract content from JSON.<br>
+ *
  * @author code4crafter@gmail.com <br>
- *         Date: 13-8-12 <br>
- *         Time: 下午12:54 <br>
+ * @since 0.2.1
  */
 public class JsonPathSelector implements Selector {
 
@@ -44,7 +46,7 @@ public class JsonPathSelector implements Selector {
             return list;
         }
         if (object instanceof List) {
-            return (List<String>)object;
+            return (List<String>) object;
         } else {
             list.add(object.toString());
         }

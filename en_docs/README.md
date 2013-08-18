@@ -1,15 +1,19 @@
 webmagic
 ---
+[Readme in Chinese](https://github.com/code4craft/webmagic/tree/master/zh_docs)
+
 [![Build Status](https://travis-ci.org/code4craft/webmagic.png?branch=master)](https://travis-ci.org/code4craft/webmagic)
 
->A crawler framework. It covers the whole lifecycle of crawler: downloading, url management, content extraction and persistent. It can simply the development of a  specific crawler.
+>A scalable crawler framework. It covers the whole lifecycle of crawler: downloading, url management, content extraction and persistent. It can simply the development of a  specific crawler.
 
 ## Features:
 
 * Simple core with high flexibility.
 * Simple API for html extracting.
+* Annotation with POJO to customize a crawler, no configuration.
 * Multi-thread and Distribution support.
 * Easy to be integrated.
+
 
 ## Install:
 
@@ -88,11 +92,35 @@ You can also use annotation way:
 				new ConsolePageModelPipeline(), OschinaBlog.class).run();
 	    }
 	}
-	
-### Samples:
+		
+### Docs and samples:
+
+The architecture of webmagic (refered to [Scrapy](http://scrapy.org/))
+
+![image](http://code4craft.github.io/images/posts/webmagic.png)
+
+Javadocs: [http://code4craft.github.io/webmagic/docs/en/](http://code4craft.github.io/webmagic/docs/en/)
 
 There are some samples in `webmagic-samples` package.
+
 
 ### Lisence:
 
 Lisenced under [Apache 2.0 lisence](http://opensource.org/licenses/Apache-2.0)
+
+### Thanks:
+
+To write webmagic, I refered to the projects below :
+
+* **Scrapy**
+
+	A crawler framework in Python.
+ 
+	[http://scrapy.org/](http://scrapy.org/)
+
+* **Spiderman**
+
+	Another crawler framework in Java.
+	
+	[https://gitcafe.com/laiweiwei/Spiderman](https://gitcafe.com/laiweiwei/Spiderman)
+

@@ -29,8 +29,7 @@ import us.codecraft.webmagic.Site;
 
 /**
  * @author code4crafter@gmail.com <br>
- *         Date: 13-4-21
- *         Time: 下午12:29
+ * @since 0.1.0
  */
 public class HttpClientPool {
 

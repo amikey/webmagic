@@ -8,10 +8,10 @@ import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
 
 /**
- * xpath的选择器。包装了HtmlCleaner。<br>
- * 
+ * XPath selector based on HtmlCleaner.<br>
+ *
  * @author code4crafter@gmail.com <br>
- *         Date: 13-4-21 Time: 上午9:39
+ * @since 0.1.0
  */
 public class XpathSelector extends AbstractedSelector {
 
