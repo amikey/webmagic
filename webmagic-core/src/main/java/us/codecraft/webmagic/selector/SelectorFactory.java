@@ -26,6 +26,10 @@ public class SelectorFactory {
         return newSelector(RegexSelector.class, regex);
     }
 
+    public CssSelector newCssSelector(String expr){
+        return newSelector(CssSelector.class,expr);
+    }
+
     public ReplaceSelector newReplaceSelector(String regex, String replacement) {
         return newSelector(ReplaceSelector.class, regex, replacement);
     }
